@@ -34,5 +34,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many  :own_events, class_name: "Event", foreign_key: "host_id"
+  has_many  :comments, foreign_key: "author_id"
 
 end
