@@ -1,0 +1,11 @@
+<% content_for :title, "New rsvp" %>
+
+<h1>New rsvp</h1>
+
+<%= render "form", rsvp: @rsvp %>
+
+<br>
+
+<div>
+  <%= link_to "Back to rsvps", rsvps_path %>
+</div>

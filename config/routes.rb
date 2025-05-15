@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rsvps
   resources :follow_requests
   resources :comments
   resources :events
