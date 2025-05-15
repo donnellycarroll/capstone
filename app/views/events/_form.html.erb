@@ -1,0 +1,67 @@
+<%= form_with(model: event) do |form| %>
+  <% if event.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :host_id, style: "display: block" %>
+    <%= form.text_field :host_id %>
+  </div>
+
+  <div>
+    <%= form.label :start_time, style: "display: block" %>
+    <%= form.datetime_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :end_time, style: "display: block" %>
+    <%= form.datetime_field :end_time %>
+  </div>
+
+  <div>
+    <%= form.label :rsvp_cap, style: "display: block" %>
+    <%= form.number_field :rsvp_cap %>
+  </div>
+
+  <div>
+    <%= form.label :guests_count, style: "display: block" %>
+    <%= form.number_field :guests_count %>
+  </div>
+
+  <div>
+    <%= form.label :comments_count, style: "display: block" %>
+    <%= form.number_field :comments_count %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
