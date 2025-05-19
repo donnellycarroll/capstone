@@ -27,5 +27,8 @@
 #
 class Event < ApplicationRecord
   belongs_to :host, class_name: "User", counter_cache: true
+  
   has_many  :comments
+  has_many  :rsvps
+
 end

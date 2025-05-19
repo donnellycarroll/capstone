@@ -35,5 +35,9 @@ class User < ApplicationRecord
   
   has_many  :own_events, class_name: "Event", foreign_key: "host_id"
   has_many  :comments, foreign_key: "author_id"
+  has_many  :rsvps, foreign_key: :attendee_id
+
+  has_many :sent_follow_requests, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
 
 end
