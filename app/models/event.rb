@@ -31,5 +31,13 @@ class Event < ApplicationRecord
   has_many  :comments
   has_many  :rsvps
   # has_many  :guests, class_name: "Rsvp", foreign_key: :attendee_id
+  has_many :attendees, through: :rsvps
+
+  has_many :leaders_of_leaders_events, through: :leaders_of_leaders, source: :own_events
+
+  validates :title, presence: true
+  validates :location, presence: true
+  validates :start_time, presence: true
+
 
 end

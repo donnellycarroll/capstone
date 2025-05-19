@@ -22,5 +22,5 @@ class Comment < ApplicationRecord
   belongs_to :event, counter_cache: true
   belongs_to :author, class_name: "User", counter_cache: true
 
-  
+  validates :body, presence: true
 end

@@ -34,10 +34,28 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many  :own_events, class_name: "Event", foreign_key: "host_id"
+  
   has_many  :comments, foreign_key: "author_id"
+ 
   has_many  :rsvps, foreign_key: :attendee_id
 
   has_many :sent_follow_requests, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :accepted_sent_follow_requests, -> { where(status: "accepted") }, foreign_key: :sender_id, class_name: "FollowRequest" #this doesnt work
+
   has_many :received_follow_requests, foreign_key: :recipient_id, class_name: "FollowRequest"
+  has_many :accepted_received_follow_requests, -> { where(status: "accepted") }, foreign_key: :recipient_id, class_name: "FollowRequest" #this doesnt work
+
+  
+
+  has_many :rsvped_events, through: :rsvps, source: :event
+
+  has_many :leaders, through: :accepted_sent_follow_requests, source: :recipient
+  has_many :leaders_of_leaders, through: :leaders, source: :leaders
+
+  has_many :followers, through: :accepted_received_follow_requests, source: :sender
+
+  has_many :feed, through: :leaders, source: :own_photos
+
+  has_many :discover, -> { distinct }, through: :leaders, source: :rsvped_events
 
 end
