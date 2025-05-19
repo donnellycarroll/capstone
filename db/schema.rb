@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_19_145630) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_204300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -210,7 +210,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_19_145630) do
     t.datetime "remember_created_at"
     t.string "avatar_image"
     t.string "bio"
-    t.boolean "private"
+    t.boolean "private", default: true
     t.citext "username"
     t.string "name"
     t.integer "rsvps_count", default: 0

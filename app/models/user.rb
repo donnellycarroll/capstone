@@ -10,7 +10,7 @@
 #  encrypted_password             :string           default(""), not null
 #  events_count                   :integer          default(0)
 #  name                           :string
-#  private                        :boolean
+#  private                        :boolean          default(TRUE)
 #  received_friend_requests_count :integer          default(0)
 #  remember_created_at            :datetime
 #  reset_password_sent_at         :datetime
@@ -57,5 +57,7 @@ class User < ApplicationRecord
   has_many :feed, through: :leaders, source: :own_events
 
   has_many :discover, -> { distinct }, through: :leaders, source: :rsvped_events
+
+  validates :username, presence: true, uniqueness: true
 
 end
