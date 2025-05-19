@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_15_010029) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_145630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_010029) do
     t.integer "comments_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rsvps_count", default: 0
     t.index ["host_id"], name: "index_events_on_host_id"
   end
 

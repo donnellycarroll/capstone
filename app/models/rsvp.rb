@@ -19,6 +19,6 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class Rsvp < ApplicationRecord
-  belongs_to :attendee, class_name: "User"
-  belongs_to :event
+  belongs_to :attendee, class_name: "User", counter_cache: true
+  belongs_to :event, counter_cache: true
 end

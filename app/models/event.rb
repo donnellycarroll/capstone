@@ -10,6 +10,7 @@
 #  image          :string
 #  location       :string
 #  rsvp_cap       :integer
+#  rsvps_count    :integer          default(0)
 #  start_time     :datetime
 #  title          :string
 #  created_at     :datetime         not null
@@ -25,6 +26,6 @@
 #  fk_rails_...  (host_id => users.id)
 #
 class Event < ApplicationRecord
-  belongs_to :host, class_name: "User"
+  belongs_to :host, class_name: "User", counter_cache: true
   has_many  :comments
 end
