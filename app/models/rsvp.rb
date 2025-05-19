@@ -21,4 +21,5 @@
 class Rsvp < ApplicationRecord
   belongs_to :attendee, class_name: "User", counter_cache: true
   belongs_to :event, counter_cache: true
+  # belongs_to :activity, class_name: "Event", foreign_key: "event_id", counter_cache: :guests_count
 end

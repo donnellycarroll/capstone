@@ -30,5 +30,6 @@ class Event < ApplicationRecord
   
   has_many  :comments
   has_many  :rsvps
+  # has_many  :guests, class_name: "Rsvp", foreign_key: :attendee_id
 
 end
