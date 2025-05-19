@@ -39,5 +39,12 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :start_time, presence: true
 
+  after_create :rsvp_to_event #look this up later (callbacks)
+
+  def rsvp_to_event
+   rsvps.create(attendee_id: host_id)
+  end
+
+
 
 end

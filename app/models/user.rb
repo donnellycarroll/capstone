@@ -54,7 +54,7 @@ class User < ApplicationRecord
 
   has_many :followers, through: :accepted_received_follow_requests, source: :sender
 
-  has_many :feed, through: :leaders, source: :own_photos
+  has_many :feed, through: :leaders, source: :own_events
 
   has_many :discover, -> { distinct }, through: :leaders, source: :rsvped_events
 
