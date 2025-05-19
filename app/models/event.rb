@@ -39,6 +39,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :start_time, presence: true
 
+  scope :this_week, -> { where(start_time: Time.current..1.week.from_now) }
+
   after_create :rsvp_to_event #look this up later (callbacks)
 
   def rsvp_to_event

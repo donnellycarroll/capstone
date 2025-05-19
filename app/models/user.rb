@@ -58,6 +58,17 @@ class User < ApplicationRecord
 
   has_many :discover, -> { distinct }, through: :leaders, source: :rsvped_events
 
+  # I.   events hosted by my leaders
+  has_many :events_hosted_by_leaders, through: :leaders, source: :own_events
+
+  # II.  events my leaders attend
+  has_many :leaders_rsvps, -> { distinct }, through: :leaders, source: :rsvps 
+  has_many :events_attended_by_leaders, -> { distinct }, through: :leaders_rsvps, source: :event
+
+  # III. events my leaders’ leaders attend
+  has_many :leaders_of_leaders_rsvps, -> { distinct }, through: :leaders_of_leaders, source: :rsvps 
+  has_many :events_attended_by_leaders_of_leaders, -> { distinct }, through: :leaders_of_leaders_rsvps, source: :event #this doesnt work yet or i dont have enough sample data
+
   validates :username, presence: true, uniqueness: true
 
 end
